@@ -1,4 +1,3 @@
 {
-  "presets": ["react"],
-  "ignore": ["**/*.stories.js"]
+  "presets": ["react"]
 }

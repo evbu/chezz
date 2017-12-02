@@ -14,6 +14,6 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build": "babel components -d build"
+    "build": "babel components -d build --ignore '**/*.stories.js'"
   }
 }
