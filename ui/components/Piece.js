@@ -15,8 +15,8 @@ const defaultProps = {
 }
 
 const style = ({x, y}) => ({
-  top: x,
-  left: y,
+  left: x,
+  top: y,
   position: 'absolute',
 })
 
