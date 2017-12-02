@@ -1,15 +1,35 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export const Pawn = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="45" height="45">
+const propTypes = {
+  x: PropTypes.number,
+  y: PropTypes.number,
+  size: PropTypes.number.isRequired,
+  colour: PropTypes.string.isRequired,
+  offColour: PropTypes.string.isRequired,
+}
+
+const defaultProps = {
+  x: 0,
+  y: 0,
+}
+
+const style = ({x, y}) => ({
+  top: x,
+  left: y,
+  position: 'absolute',
+})
+
+const Pawn = ({x, y, size, colour, offColour}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 45 45" width={size} height={size} style={style({x, y})}>
     <path
       d="M 22,9 C 19.79,9 18,10.79 18,13 C 18,13.89 18.29,14.71 18.78,15.38 C 16.83,16.5 15.5,18.59 15.5,21 C 15.5,23.03 16.44,24.84 17.91,26.03 C 14.91,27.09 10.5,31.58 10.5,39.5 L 33.5,39.5 C 33.5,31.58 29.09,27.09 26.09,26.03 C 27.56,24.84 28.5,23.03 28.5,21 C 28.5,18.59 27.17,16.5 25.22,15.38 C 25.71,14.71 26,13.89 26,13 C 26,10.79 24.21,9 22,9 z "
       style={{
         'opacity': '1',
-        'fill': '#ffffff',
+        'fill': colour,
         'fillOpacity': '1',
         'fillRule': 'nonzero',
-        'stroke': '#000000',
+        'stroke': offColour,
         'strokeWidth': '1.5',
         'strokeLinecap': 'round',
         'strokeLinejoin': 'miter',
@@ -21,14 +41,17 @@ export const Pawn = () => (
   </svg>
 )
 
-export const Knight = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="45" height="45">
+Pawn.propTypes = propTypes
+Pawn.defaultProps = defaultProps
+
+const Knight = ({x, y, size, colour, offColour}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 45 45" width={size} height={size} style={style({x, y})}>
     <g style={{
       'opacity': '1',
       'fill': 'none',
       'fillOpacity': '1',
       'fillRule': 'evenodd',
-      'stroke': '#000000',
+      'stroke': offColour,
       'strokeWidth': '1.5',
       'strokeLinecap': 'round',
       'strokeLinejoin': 'round',
@@ -39,44 +62,47 @@ export const Knight = () => (
       <path
         d="M 22,10 C 32.5,11 38.5,18 38,39 L 15,39 C 15,30 25,32.5 23,18"
         style={{
-          'fill': '#ffffff',
-          'stroke': '#000000',
+          'fill': colour,
+          'stroke': offColour,
         }}
       />
       <path
         d="M 24,18 C 24.38,20.91 18.45,25.37 16,27 C 13,29 13.18,31.34 11,31 C 9.958,30.06 12.41,27.96 11,28 C 10,28 11.19,29.23 10,30 C 9,30 5.997,31 6,26 C 6,24 12,14 12,14 C 12,14 13.89,12.1 14,10.5 C 13.27,9.506 13.5,8.5 13.5,7.5 C 14.5,6.5 16.5,10 16.5,10 L 18.5,10 C 18.5,10 19.28,8.008 21,7 C 22,7 22,10 22,10"
         style={{
-          'fill': '#ffffff',
-          'stroke': '#000000',
+          'fill': colour,
+          'stroke': offColour,
         }}
       />
       <path
         d="M 9.5 25.5 A 0.5 0.5 0 1 1 8.5,25.5 A 0.5 0.5 0 1 1 9.5 25.5 z"
         style={{
-          'fill': '#000000',
-          'stroke': '#000000',
+          'fill': offColour,
+          'stroke': offColour,
         }}
       />
       <path
         d="M 15 15.5 A 0.5 1.5 0 1 1  14,15.5 A 0.5 1.5 0 1 1  15 15.5 z"
         transform="matrix(0.866,0.5,-0.5,0.866,9.693,-5.173)"
         style={{
-          'fill': '#000000',
-          'stroke': '#000000',
+          'fill': offColour,
+          'stroke': offColour,
         }}
       />
     </g>
   </svg>
 )
 
-export const Bishop = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="45" height="45">
+Knight.propTypes = propTypes
+Knight.defaultProps = defaultProps
+
+const Bishop = ({x, y, size, colour, offColour}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 45 45" width={size} height={size} style={style({x, y})}>
     <g style={{
       'opacity': '1',
       'fill': 'none',
       'fillRule': 'evenodd',
       'fillOpacity': '1',
-      'stroke': '#000000',
+      'stroke': offColour,
       'strokeWidth': '1.5',
       'strokeLinecap': 'round',
       'strokeLinejoin': 'round',
@@ -85,8 +111,8 @@ export const Bishop = () => (
       'strokeOpacity': '1',
     }}>
       <g style={{
-        'fill': '#ffffff',
-        'stroke': '#000000',
+        'fill': colour,
+        'stroke': offColour,
         'strokeLinecap': 'butt',
       }}>
         <path
@@ -100,7 +126,7 @@ export const Bishop = () => (
         d="M 17.5,26 L 27.5,26 M 15,30 L 30,30 M 22.5,15.5 L 22.5,20.5 M 20,18 L 25,18"
         style={{
           'fill': 'none',
-          'stroke': '#000000',
+          'stroke': offColour,
           'strokeLinejoin': 'miter',
         }}
       />
@@ -108,14 +134,17 @@ export const Bishop = () => (
   </svg>
 )
 
-export const Rook = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="45" height="45">
+Bishop.propTypes = propTypes
+Bishop.defaultProps = defaultProps
+
+const Rook = ({x, y, size, colour, offColour}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 45 45" width={size} height={size} style={style({x, y})}>
     <g style={{
       'opacity': '1',
-      'fill': '#ffffff',
+      'fill': colour,
       'fillOpacity': '1',
       'fillRule': 'evenodd',
-      'stroke': '#000000',
+      'stroke': offColour,
       'strokeWidth': '1.5',
       'strokeLinecap': 'round',
       'strokeLinejoin': 'round',
@@ -156,7 +185,7 @@ export const Rook = () => (
         d="M 11,14 L 34,14"
         style={{
           'fill': 'none',
-          'stroke': '#000000',
+          'stroke': offColour,
           'strokeLinejoin': 'miter',
         }}
       />
@@ -164,14 +193,17 @@ export const Rook = () => (
   </svg>
 )
 
-export const Queen = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="45" height="45">
+Rook.propTypes = propTypes
+Rook.defaultProps = defaultProps
+
+const Queen = ({x, y, size, colour, offColour}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 45 45" width={size} height={size} style={style({x, y})}>
     <g style={{
       'opacity': '1',
-      'fill': '#ffffff',
+      'fill': colour,
       'fillOpacity': '1',
       'fillRule': 'evenodd',
-      'stroke': '#000000',
+      'stroke': offColour,
       'strokeWidth': '1.5',
       'strokeLinecap': 'round',
       'strokeLinejoin': 'round',
@@ -222,13 +254,16 @@ export const Queen = () => (
   </svg>
 )
 
-export const King = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="45" height="45">
+Queen.propTypes = propTypes
+Queen.defaultProps = defaultProps
+
+const King = ({x, y, size, colour, offColour}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 45 45" width={size} height={size} style={style({x, y})}>
     <g style={{
       'fill': 'none',
       'fillOpacity': '1',
       'fillRule': 'evenodd',
-      'stroke': '#000000',
+      'stroke': offColour,
       'strokeWidth': '1.5',
       'strokeLinecap': 'round',
       'strokeLinejoin': 'round',
@@ -240,7 +275,7 @@ export const King = () => (
         d="M 22.5,11.63 L 22.5,6"
         style={{
           'fill': 'none',
-          'stroke': '#000000',
+          'stroke': offColour,
           'strokeLinejoin': 'miter',
         }}
       />
@@ -248,15 +283,15 @@ export const King = () => (
         d="M 20,8 L 25,8"
         style={{
           'fill': 'none',
-          'stroke': '#000000',
+          'stroke': offColour,
           'strokeLinejoin': 'miter'
         }}
       />
       <path
         d="M 22.5,25 C 22.5,25 27,17.5 25.5,14.5 C 25.5,14.5 24.5,12 22.5,12 C 20.5,12 19.5,14.5 19.5,14.5 C 18,17.5 22.5,25 22.5,25"
         style={{
-          'fill': '#ffffff',
-          'stroke': '#000000',
+          'fill': colour,
+          'stroke': offColour,
           'strokeLinecap': 'butt',
           'strokeLinejoin': 'miter'
         }}
@@ -264,31 +299,36 @@ export const King = () => (
       <path
         d="M 11.5,37 C 17,40.5 27,40.5 32.5,37 L 32.5,30 C 32.5,30 41.5,25.5 38.5,19.5 C 34.5,13 25,16 22.5,23.5 L 22.5,27 L 22.5,23.5 C 19,16 9.5,13 6.5,19.5 C 3.5,25.5 11.5,29.5 11.5,29.5 L 11.5,37 z "
         style={{
-          'fill': '#ffffff',
-          'stroke': '#000000',
+          'fill': colour,
+          'stroke': offColour,
         }}
       />
       <path
         d="M 11.5,30 C 17,27 27,27 32.5,30"
         style={{
           'fill': 'none',
-          'stroke': '#000000',
+          'stroke': offColour,
         }}
       />
       <path
         d="M 11.5,33.5 C 17,30.5 27,30.5 32.5,33.5"
         style={{
           'fill': 'none',
-          'stroke': '#000000',
+          'stroke': offColour,
         }}
       />
       <path
         d="M 11.5,37 C 17,34 27,34 32.5,37"
         style={{
           'fill': 'none',
-          'stroke': '#000000',
+          'stroke': offColour,
         }}
       />
     </g>
   </svg>
 )
+
+King.propTypes = propTypes
+King.defaultProps = defaultProps
+
+export { Pawn, Knight, Bishop, Rook, Queen, King }
