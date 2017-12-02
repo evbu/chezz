@@ -1,16 +1,19 @@
 {
-  "name": "ui",
+  "name": "chezz-ui",
   "version": "0.1.0",
-  "main": "index.js",
+  "main": "build/index.js",
   "license": "MIT",
   "devDependencies": {
-    "@storybook/react": "^3.2.16"
+    "@storybook/react": "^3.2.16",
+    "babel-cli": "^6.26.0",
+    "babel-preset-react": "^6.24.1"
   },
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
   "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build": "babel components -d build"
   }
 }
