@@ -1,22 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const SIZE = 8;
-const SQUARES = SIZE * SIZE;
+const TILES_PER_ROW = 8;
+const SQUARES = TILES_PER_ROW * TILES_PER_ROW;
 
 const isOdd = num => num % 2;
 const isEven = num => !isOdd(num);
 
-export const Board = () => {
+const Board = ({ size }) => {
   let tiles = [];
 
   for (let i = 0; i < SQUARES; i++) {
-    const row = Math.floor(i / SIZE);
-    const col = i % SIZE;
+    const row = Math.floor(i / TILES_PER_ROW);
+    const col = i % TILES_PER_ROW;
 
     tiles.push(React.createElement('div', { key: i, style: {
         'background': isOdd(row) && isEven(col) || isEven(row) && isOdd(col) ? 'white' : 'black',
-        'width': 45,
-        'height': 45,
+        'width': size,
+        'height': size,
         'float': 'right'
       } }));
   }
@@ -24,9 +25,15 @@ export const Board = () => {
   return React.createElement(
     'div',
     { style: {
-        'width': 45 * SIZE,
-        'height': 45 * SIZE
+        'width': size * TILES_PER_ROW,
+        'height': size * TILES_PER_ROW
       } },
     tiles
   );
 };
+
+Board.propTypes = {
+  size: PropTypes.number.isRequired
+};
+
+export { Board };
