@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Pawn, Knight, Bishop, Rook, Queen, King } from './Piece'
+import { Pawn, Knight, Bishop, Rook, Queen, King } from './Pieces'
 
 storiesOf('Piece', module)
   .add('Pawn', () => (
