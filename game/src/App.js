@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
-import { Pawn, Knight, Bishop, Rook, Queen, King } from 'chezz-ui'
+
+import { Board } from 'chezz-ui'
+
+import { DraggablePiece } from './DraggablePiece'
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Pawn />
-        <Knight />
-        <Bishop />
-        <Rook />
-        <Queen />
-        <King />
+        <Board size={50} />
+        <DraggablePiece size={50} />
       </div>
     )
   }
