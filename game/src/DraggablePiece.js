@@ -14,7 +14,6 @@ class DraggablePiece extends Component {
   }
 
   onDrag = (e, data) => {
-    const { size } = this.props
     const { x, y } = this.state
     this.setState({
       x: x + data.deltaX,
