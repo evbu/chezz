@@ -28,8 +28,21 @@ class DraggablePiece extends Component {
     const col = Math.floor((x + size / 2) / size),
           row = Math.floor((y + size / 2) / size)
 
-    const xPos = snap ? col * size : x,
-          yPos = snap ? row * size : y
+    let snapped = false
+
+    if (snap instanceof Array) {
+      for (let coordinates of snap) {
+        if (coordinates[0] === col && coordinates[1] === row) {
+          snapped = true
+          break
+        }
+      }
+    } else {
+      snapped = snap
+    }
+
+    const xPos = snapped ? col * size : x,
+          yPos = snapped ? row * size : y
 
     return (
       <DraggableCore onDrag={this.onDrag}>

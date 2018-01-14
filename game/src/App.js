@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div>
         <Board size={50} />
-        <DraggablePiece size={50} snap />
+        <DraggablePiece size={50} snap={[[0,0], [2,2]]} />
       </div>
     )
   }
