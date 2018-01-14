@@ -22,13 +22,19 @@ class DraggablePiece extends Component {
   }
 
   render() {
-    const { size } = this.props
+    const { size, snap } = this.props
     const { x, y } = this.state
+
+    const col = Math.floor((x + size / 2) / size),
+          row = Math.floor((y + size / 2) / size)
+
+    const xPos = snap ? col * size : x,
+          yPos = snap ? row * size : y
 
     return (
       <DraggableCore onDrag={this.onDrag}>
         <div>
-          <Pawn x={x} y={y} size={size} colour="white" offColour="black" />
+          <Pawn x={xPos} y={yPos} size={size} colour="white" offColour="black" />
         </div>
       </DraggableCore>
     )
@@ -36,7 +42,12 @@ class DraggablePiece extends Component {
 }
 
 DraggablePiece.propTypes = {
-  size: PropTypes.number.isRequired
+  size: PropTypes.number.isRequired,
+  snap: PropTypes.bool,
+}
+
+DraggablePiece.defaultProps = {
+  snap: false,
 }
 
 export { DraggablePiece }

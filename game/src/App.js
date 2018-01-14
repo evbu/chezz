@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div>
         <Board size={50} />
-        <DraggablePiece size={50} />
+        <DraggablePiece size={50} snap />
       </div>
     )
   }
